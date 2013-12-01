@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# This is where postgresql connection parameters are read from
+TESTENV=../config/environments/test
+
+# NOTE: assumes existance of a "template_postgis" loaded with
+#       compatible version of postgis (legacy.sql included)
+
+
+# Extract postgres configuration
+
+PGUSER=`node -e "console.log(require('${TESTENV}').postgres.user)"`
+echo "PGUSER: [$PGUSER]"
+PGHOST=`node -e "console.log(require('${TESTENV}').postgres.host)"`
+echo "PGHOST: [$PGHOST]"
+PGPORT=`node -e "console.log(require('${TESTENV}').postgres.port)"`
+echo "PGPORT: [$PGPORT]"
+
+export PGUSER PGHOST PGPORT
+
+die() {
+        msg=$1
+        echo "${msg}" >&2
+        exit 1
+}
+
+echo "...Configuring Windshaft test database"
+
+echo "...Recreating windshaft_test database"
+dropdb windshaft_test | 2>&1
+createdb -Ttemplate_postgis -EUTF8 windshaft_test || die "Could not create test database" 
+
+echo "...Populating windshaft_test database with test data"
+psql windshaft_test < ./fixtures/windshaft.test.sql
+
+echo "...Test database configuration complete"

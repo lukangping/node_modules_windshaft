@@ -1,0 +1,5 @@
+node_modules*
+test/performance/stresstest*
+.idea
+redis.pid
+test.log

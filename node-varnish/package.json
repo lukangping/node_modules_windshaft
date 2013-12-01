@@ -1,0 +1,41 @@
+{
+  "name": "node-varnish",
+  "version": "0.1.1",
+  "main": "./lib/node-varnish/index.js",
+  "description": "A node.js connector to Varnish using the Varnish telnet management protocol",
+  "url": "https://github.com/Vizzuality/node-varnish",
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git://github.com/Vizzuality/node-varnish.git"
+    }
+  ],
+  "author": {
+    "name": "Javier Santana, Simon Tokumine, Vizzuality",
+    "email": "jsantana@vizzuality.com",
+    "url": "http://vizzuality.com"
+  },
+  "devDependencies": {
+    "mocha": "1.2.1"
+  },
+  "scripts": {
+    "test": "mocha -u tdd test/acceptance/varnish.js"
+  },
+  "readme": "node-varnish\n==\n\nA node.js connector to Varnish using the [Varnish telnet management protocol](https://www.varnish-cache.org/trac/wiki/ManagementPort).\n\n```javascript\nvar Varnish = require('node-varnish');\n\nvar client = new Varnish.VarnishClient('127.0.0.1', MANAGEMENT_PORT);\nclient.on('ready', function() {\n    client.run_cmd('purge obj.http.X == test', function(){});\n});\n```\n\nFor more usage examples, see the [tests](https://github.com/Vizzuality/node-varnish/blob/master/test/acceptance/varnish.js).\n\nInstall\n--\n```\nnpm install node-varnish\n```\n\nDependencies\n--\n\n* [node.js](http://nodejs.org/) >=4.x\n* [varnish](https://www.varnish-cache.org/) >=2.x\n\nContributors\n--\n\n* [Javi Santana](https://github.com/javisantana/)\n* [Simon Tokumine](https://github.com/tokumine/)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Vizzuality/node-varnish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vizzuality/node-varnish/issues"
+  },
+  "homepage": "https://github.com/Vizzuality/node-varnish",
+  "_id": "node-varnish@0.1.1",
+  "_from": "node-varnish@0.1.1"
+}

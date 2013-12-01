@@ -1,0 +1,14 @@
+Versions 0.1.1
+2012-07-10
+
+ - Fix global variable leaks (#1)
+ - Testsuite enhancements
+   - Tests ported to mocha (#6)
+   - Run on "make check" (#4)
+   - Improve runtime predictability (#5)
+ - Add "make all" and "make clean" fules
+
+Versions 0.1.0
+2011-12-12
+
+ - Initial release
